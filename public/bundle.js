@@ -10040,52 +10040,52 @@ function getImage(e) {
                                                 canvas.width = width;
                                                 canvas.height = height;
                                                 context = canvas.getContext('2d');
+                                                // context.clearRect(0, 0, canvas.width, canvas.height);
+                                                // // save the unrotated context of the canvas so we can restore it later
+                                                // // the alternative is to untranslate & unrotate after drawing
+                                                // context.save();
+                                                // // move to the center of the canvas
+                                                // context.translate(canvas.width / 2, canvas.height / 2);
+                                                // // rotate the canvas to the specified degrees
+                                                // context.rotate(90 * Math.PI / 180);
+                                                // // draw the image
+                                                // // since the context is rotated, the image will be rotated also
+                                                // context.drawImage(image, -width / 2, -width / 2, width, height);
+                                                // // we’re done with the rotating so restore the unrotated context
+                                                // context.restore();
 
-                                                context.clearRect(0, 0, canvas.width, canvas.height);
-                                                // save the unrotated context of the canvas so we can restore it later
-                                                // the alternative is to untranslate & unrotate after drawing
-                                                context.save();
-                                                // move to the center of the canvas
-                                                context.translate(canvas.width / 2, canvas.height / 2);
-                                                // rotate the canvas to the specified degrees
-                                                context.rotate(90 * Math.PI / 180);
-                                                // draw the image
-                                                // since the context is rotated, the image will be rotated also
-                                                context.drawImage(image, -width / 2, -width / 2, width, height);
-                                                // we’re done with the rotating so restore the unrotated context
-                                                context.restore();
-                                                // context.drawImage(image, 0, 0, width, height);
+                                                context.drawImage(image, 0, 0, width, height);
                                                 resizedImage = canvas.toDataURL('image/png');
 
                                                 console.log(resizedImage);
                                                 preview2 = document.getElementById('preview2');
 
                                                 preview2.src = resizedImage;
-                                                _context.prev = 17;
-                                                _context.next = 20;
+                                                _context.prev = 12;
+                                                _context.next = 15;
                                                 return axios.post('/callOcr', {
                                                     imgBase: resizedImage
                                                 });
 
-                                            case 20:
+                                            case 15:
                                                 data = _context.sent;
-                                                _context.next = 26;
+                                                _context.next = 21;
                                                 break;
 
-                                            case 23:
-                                                _context.prev = 23;
-                                                _context.t0 = _context["catch"](17);
+                                            case 18:
+                                                _context.prev = 18;
+                                                _context.t0 = _context["catch"](12);
 
                                                 alert(_context.t0);
 
-                                            case 26:
+                                            case 21:
                                                 dataJson = data.data;
                                                 cells = dataJson.Result.tables[0].cells;
                                                 lines = [];
                                                 _iteratorNormalCompletion = true;
                                                 _didIteratorError = false;
                                                 _iteratorError = undefined;
-                                                _context.prev = 32;
+                                                _context.prev = 27;
 
                                                 for (_iterator = cells[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                                                     cell = _step.value;
@@ -10094,40 +10094,40 @@ function getImage(e) {
                                                         lines = [].concat(_toConsumableArray(lines), _toConsumableArray(cell.lines));
                                                     }
                                                 }
-                                                _context.next = 40;
+                                                _context.next = 35;
                                                 break;
 
-                                            case 36:
-                                                _context.prev = 36;
-                                                _context.t1 = _context["catch"](32);
+                                            case 31:
+                                                _context.prev = 31;
+                                                _context.t1 = _context["catch"](27);
                                                 _didIteratorError = true;
                                                 _iteratorError = _context.t1;
 
-                                            case 40:
-                                                _context.prev = 40;
-                                                _context.prev = 41;
+                                            case 35:
+                                                _context.prev = 35;
+                                                _context.prev = 36;
 
                                                 if (!_iteratorNormalCompletion && _iterator.return) {
                                                     _iterator.return();
                                                 }
 
-                                            case 43:
-                                                _context.prev = 43;
+                                            case 38:
+                                                _context.prev = 38;
 
                                                 if (!_didIteratorError) {
-                                                    _context.next = 46;
+                                                    _context.next = 41;
                                                     break;
                                                 }
 
                                                 throw _iteratorError;
 
-                                            case 46:
-                                                return _context.finish(43);
+                                            case 41:
+                                                return _context.finish(38);
 
-                                            case 47:
-                                                return _context.finish(40);
+                                            case 42:
+                                                return _context.finish(35);
 
-                                            case 48:
+                                            case 43:
                                                 texts = lines.reduce(function (texts, line) {
                                                     return [].concat(_toConsumableArray(texts), _toConsumableArray(line.text.split(' ')));
                                                 }, []);
@@ -10146,17 +10146,17 @@ function getImage(e) {
                                                     }
                                                 }
                                                 console.log(map);
-                                                _context.next = 56;
+                                                _context.next = 51;
                                                 return axios.post('/saveMap', {
                                                     map: map
                                                 });
 
-                                            case 56:
+                                            case 51:
                                             case "end":
                                                 return _context.stop();
                                         }
                                     }
-                                }, _callee, this, [[17, 23], [32, 36, 40, 48], [41,, 43, 47]]);
+                                }, _callee, this, [[12, 18], [27, 31, 35, 43], [36,, 38, 42]]);
                             }));
 
                         case 4:

@@ -37,27 +37,27 @@ function getImage(e) {
       var context = canvas.getContext('2d');
 
 
-      context.clearRect(0, 0, canvas.width, canvas.height);
+      // context.clearRect(0, 0, canvas.width, canvas.height);
 
-      // save the unrotated context of the canvas so we can restore it later
-      // the alternative is to untranslate & unrotate after drawing
-      context.save();
+      // // save the unrotated context of the canvas so we can restore it later
+      // // the alternative is to untranslate & unrotate after drawing
+      // context.save();
 
-      // move to the center of the canvas
-      context.translate(canvas.width / 2, canvas.height / 2);
+      // // move to the center of the canvas
+      // context.translate(canvas.width / 2, canvas.height / 2);
 
-      // rotate the canvas to the specified degrees
-      context.rotate(90 * Math.PI / 180);
+      // // rotate the canvas to the specified degrees
+      // context.rotate(90 * Math.PI / 180);
 
-      // draw the image
-      // since the context is rotated, the image will be rotated also
-      context.drawImage(image, -width / 2, -width / 2, width, height);
+      // // draw the image
+      // // since the context is rotated, the image will be rotated also
+      // context.drawImage(image, -width / 2, -width / 2, width, height);
 
-      // we’re done with the rotating so restore the unrotated context
-      context.restore();
+      // // we’re done with the rotating so restore the unrotated context
+      // context.restore();
 
 
-      // context.drawImage(image, 0, 0, width, height);
+      context.drawImage(image, 0, 0, width, height);
       var resizedImage = canvas.toDataURL('image/png');
       console.log(resizedImage)
       var preview2: any = document.getElementById('preview2');
